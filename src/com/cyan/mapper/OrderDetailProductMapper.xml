@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Created by Sun -->
+<!-- get order detail products information -->
+<mapper namespace="com.cyan.mapper.OrderDetailProductMapper">
+
+	<select id="getOrderDetailProduct" parameterType="java.lang.Integer"  resultType="com.cyan.entity.OrderDetailProduct">
+	
+		select * from orderdetail left join product on product.product_id=orderdetail.product_id where order_id = #{orderId,jdbcType=INTEGER}
+	
+	</select>
+
+</mapper>

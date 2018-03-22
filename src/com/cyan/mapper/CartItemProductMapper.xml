@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Created bu Sun -->
+<!-- get customer shopping cart products information -->
+<mapper namespace="com.cyan.mapper.CartItemProductMapper">
+
+	<select id="getCustomerCartProducts" parameterType="java.lang.Integer"  resultType="com.cyan.entity.CartItemProduct">
+	
+		select * from cartitem left join product on product.product_id=cartitem.product_id where cart_id = (
+		select cart_id from cart where user_id=#{userId,jdbcType=INTEGER})
+	
+	</select>
+
+</mapper>
